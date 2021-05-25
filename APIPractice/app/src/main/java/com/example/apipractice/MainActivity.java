@@ -53,47 +53,9 @@ public class MainActivity extends AppCompatActivity {
         HospViewAdapter adapter = new HospViewAdapter(itemArrayList);
         recyclerView.setAdapter(adapter);
 
-//        HospViewAdapter adapter = new HospViewAdapter(itemArrayList);
-//        recyclerView.setAdapter(adapter);
-//
-//        for (int i=0; i<itemArrayList.size(); i++) {
-//            Log.v("리사이클러뷰", "너 돌아가고있니?");
-//            itemArrayList.get(i).hospitalName = item.hospitalName;
-//            Log.v("리사이클러뷰", "너 돌아가고있니?");
-//            itemArrayList.get(i).hospitalAddr = item.hospitalAddr;
-//            Log.v("리사이클러뷰", "너 돌아가고있니?");
-//
-//            itemViewArrayList.add(i, item);
-//        }
-
         showList();
 
     }
-
-    //Button을 클릭했을 때 자동으로 호출되는 callback Method
-//    public void mOnClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.button: //button 클릭 시 (검색 버튼)
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    getXmlData(); //버튼 클릭시 파싱시작, 파싱내용 items에 객체 배열로 저장
-//
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//
-//                            for(int i = 0; i<itemArrayList.size(); i++){
-//                                Log.v("태그", i+" 번째 주소 : " + itemArrayList.get(i).hospitalAddr);
-//                                Log.v("태그", i+" 번째 이름 : " + itemArrayList.get(i).hospitalName);
-//                            }
-//                        }
-//                    });
-//                }
-//            }).start();
-//            break;
-//        }
-//    }
 
     void showList() {
         button.setOnClickListener(new View.OnClickListener() {
@@ -115,19 +77,16 @@ public class MainActivity extends AppCompatActivity {
                                             Log.v("태그", i+" 번째 이름 : " + itemArrayList.get(i).hospitalName);
                                         }
 
+                                        HospViewAdapter adapter = new HospViewAdapter(itemArrayList);
+                                        recyclerView.setAdapter(adapter);
 
                                         for (int i=0; i<itemArrayList.size(); i++) {
-//                                            Log.v("??", "잘 되나?");
-//                                            itemViewArrayList.add(i, itemArrayList.get(i));
-//                                            Log.v("??", "잘 되나?");
-//                                            itemViewArrayList.add(i, item);
-
-                                            itemArrayList.get(i).hospitalName = item.hospitalName;
-                                            Log.v("리사이클러뷰", "너 돌아가고있니?");
-                                            itemArrayList.get(i).hospitalAddr = item.hospitalAddr;
-                                            Log.v("리사이클러뷰", "너 돌아가고있니?");
-
+                                            Log.v("??", "잘 되나?");
+                                            itemViewArrayList.add(i, itemArrayList.get(i));
+                                            Log.v("??", "잘 되나?");
                                             itemViewArrayList.add(i, item);
+
+                                             itemViewArrayList.add(i, item);
                                         }
                                     }
                                 });
@@ -201,88 +160,8 @@ public class MainActivity extends AppCompatActivity {
         } catch(Exception e){
             Log.v("태그", "e = " + e);
         }
-        //임시 아이템을 items에게 넘겨줌줌
+        //임시 아이템을 items에게 넘겨줌
         itemArrayList = tmpItmes;
     }
-
-
-
-
-
-//    void getXmlData() {
-//        StringBuffer buffer = new StringBuffer();
-//        String str = edit.getText().toString();
-//
-//        String queryUrl = "http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList?ServiceKey=" + key + "&emdongNm=" + str + "&pageNo=1";
-//        Log.v("태그", "url" + queryUrl);
-//
-//        try {
-//            URL url = new URL(queryUrl);
-//            InputStream is = url.openStream();
-//
-//            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-//            XmlPullParser xpp = factory.newPullParser();
-//            xpp.setInput(new InputStreamReader(is, "UTF-8"));
-//
-//            Log.v("태그", "api 전송후");
-//
-//            xpp.next();
-//            int eventType = xpp.getEventType();
-//
-//            while (eventType != XmlPullParser.END_DOCUMENT) {
-//                String tag;
-//                switch (eventType) {
-//                    case XmlPullParser.START_DOCUMENT:
-//                        buffer.append("파싱 시작...\n\n");
-//                        break;
-//                    case XmlPullParser.START_TAG:
-//
-//                        tag = xpp.getName();
-//
-//                        if (tag.equals("item")) Log.v("태그", "아이템발견!!!!!!!!!!!"); //아이템 발견 => 아이템 시작
-//                         else if (tag.equals("clCdNm")) {
-//                            buffer.append("종별코드명: ");
-//                            xpp.next();
-//                            buffer.append("\n");
-//                            ClCdNmArray.add(xpp.getText());
-//                            Log.v("태그", "종별코드 " + xpp.getText());
-//                        } else if (tag.equals("addr")) {
-//                            buffer.append("주소: ");
-//                            xpp.next();
-//                            buffer.append("\n");
-//                            AddrArray.add(xpp.getText());
-//                            Log.v("태그", "주소 " + xpp.getText());
-//                        } else if (tag.equals("yadmNm")) {
-//                             buffer.append("병원명 : ");
-//                             xpp.next();
-//                             buffer.append("\n");
-//                             YadmNmArray.add(xpp.getText());
-//                        }
-//                        break;
-//                    case XmlPullParser.END_TAG:
-//                        tag = xpp.getName();
-//                        if (tag.equals("item")) buffer.append("\n");
-//                        break;
-//                }
-//                eventType = xpp.next();
-//            }
-//
-//        } catch(Exception e){
-//            Log.v("태그", "e = " + e);
-//        }
-//        buffer.append("파싱 끝");
-//
-//        AsyncItemClass.ClCdNmArray = ClCdNmArray;
-//        AsyncItemClass.AddrArray = AddrArray;
-//        AsyncItemClass.YadmNmArray = YadmNmArray;
-//
-//        //객체로 다시 만들어줘야하나???
-//        for (int i=0; i<AsyncItemClass.AddrArray.size(); i++) {
-//            String hospitalName = AsyncItemClass.YadmNmArray.get(i);
-//            String hospitalAddr = AsyncItemClass.AddrArray.get(i);
-//
-//            item = new Item(hospitalName, hospitalAddr);
-//        }
-//    }
 
 }

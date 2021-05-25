@@ -12,8 +12,7 @@ import java.util.ArrayList;
 
 public class HospViewAdapter extends RecyclerView.Adapter<HospViewAdapter.ViewHolder> {
 
-//    private ArrayList<String> mData = null;
-    ArrayList<Item> itemViewArrayList = new ArrayList<Item>(); //객체배열  ?이건 뭐짐..
+    ArrayList<Item> itemViewArrayList = new ArrayList<Item>(); //객체배열
 
     //아이템 뷰를 저장하는 뷰홀더 클래스
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -56,10 +55,8 @@ public class HospViewAdapter extends RecyclerView.Adapter<HospViewAdapter.ViewHo
     @Override
     public void onBindViewHolder(HospViewAdapter.ViewHolder holder, int position) {
         Item item = itemViewArrayList.get(position);
-//        String text = mData.get(position);
 
         holder.setItem(item);
-//        holder.hospAddr.setText(text);
     }
 
     //getItemCount() 전체 데이터 갯수 리턴
