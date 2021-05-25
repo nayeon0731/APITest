@@ -8,18 +8,20 @@
 
     <TextView
         android:id="@+id/hospName"
-        android:layout_width="405dp"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_margin="0dp"
+        android:gravity="center"
         android:text="병원명"
-        android:textAlignment="textStart"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/hospAddr"
-        android:layout_width="403dp"
+        android:layout_width="match_parent"
         android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:text="병원 주소"
         android:textSize="18sp" />
 
