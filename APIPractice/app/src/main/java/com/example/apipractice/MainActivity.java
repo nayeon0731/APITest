@@ -50,9 +50,22 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.hospList) ;
         recyclerView.setLayoutManager(new LinearLayoutManager(this)) ;
 
-        HospViewAdapter adapter = new HospViewAdapter(itemArrayList);
+        HospViewAdapter adapter = new HospViewAdapter(this, itemArrayList);
         recyclerView.setAdapter(adapter);
 
+        /*
+        adapter.setOnItemClickListener(new HospViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                //아이템 클릭 이벤트를 MainActivity에서 처리
+                Intent intent = new Intent(MainActivity.this, MoreInfoActivity.class);
+                Log.d("액티비티", "화면 전환 성공");
+                intent.putExtra("name", itemViewArrayList.get(position).getHospitalName());
+                Log.d("액티비티", "데이터 보내기");
+                startActivity(intent);
+            }
+        });
+        */
         showList();
 
     }
