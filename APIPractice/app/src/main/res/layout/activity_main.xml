@@ -18,13 +18,14 @@
             android:layout_width="250dp"
             android:layout_height="match_parent"
             android:hint="enter text to search"/>
+
         <Button
             android:id="@+id/button"
             android:layout_width="100dp"
             android:layout_height="match_parent"
+            android:onClick="mOnClick"
             android:text="search"
-            android:textSize="12sp"
-            android:onClick="mOnClick"/>
+            android:textSize="12sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
